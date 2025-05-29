@@ -10,9 +10,12 @@ console.log("🌱 Database seeded.");
 async function seed() {
 
   for (let i = 1; i <= 3; i++) {
-    const folder = await createFolders("Folder " + i);
+    const folder = await createFolders("Folder" + i);
     for (let j = 1; j <= 6; j++) {
-      await createFiles("File " + j, 1000 * j, folder.id);
+      let min = 100;
+      let max = 1000;
+      let randomInteger = Math.floor(Math.random() * (max - min + 1)) + min;
+      await createFiles("File" + j, randomInteger, folder.id);
     }
   }
 }
